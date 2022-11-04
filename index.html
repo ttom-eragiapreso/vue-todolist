@@ -25,11 +25,11 @@
     <div class="task-list">
       <ul v-if="tasks.length > 0">
         <li v-for="(task, index) in tasks"
-        :class="{'done': task.done}"
-        @click="task.done = !task.done"
+        :class="{'done': task.quantity < 1}"
+        @click="completeTask(task, index)"
         >
           {{task.text}}
-          <span v-if="task.quantity > 1">{{task.quantity}}</span>
+          <span v-if="task.quantity >= 0"> Quantità: {{task.quantity}}</span>
           <span @click.stop="removeTask(task, index)"><i class="fa-solid fa-xmark"></i></span>
         </li>
       </ul>

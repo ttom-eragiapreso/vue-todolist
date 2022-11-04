@@ -15,17 +15,14 @@ createApp({
 
       tasks: [{
         text: "Portare fuori il cane",
-        done: false,
         quantity: 1
       },
       {
         text: "Fare la spesa",
-        done: true,
-        quantity: 1
+        quantity: 0
       },
       {
         text: "Pagare le bollette",
-        done: false,
         quantity: 1
       }]
 
@@ -50,7 +47,6 @@ createApp({
         }else {
             const newTask = {
             text: this.newTaskText.charAt(0).toUpperCase() + this.newTaskText.slice(1),
-            done:false,
             quantity: 1
           }
           
@@ -63,17 +59,37 @@ createApp({
     },
 
     removeTask(task, index){
-      if(task.done){
+
+      if(task.quantity === 0){
         this.tasks.splice(index, 1)
       }else {
         this.errorMessage = "Per eliminare una task, devi prima completarla"
       }
-    }
+    },
+
+    completeTask(task, index){
+
+      this.errorMessage = ""
+      //task.quantity > 1 ? this.tasks[index].quantity-- : this.tasks[index].quantity = 0;
+      if(this.tasks[index].quantity === 0 ) {
+        console.log("la quantità è uguale a 0 e la metto a 1")
+        this.tasks[index].quantity = 1
+      }else if(this.tasks[index].quantity === 1 ) {
+        console.log("la quantità è uguale a 1 e la metto a 0")
+        this.tasks[index].quantity = 0
+      }else {
+        this.tasks[index].quantity--
+      }
+      console.log(this.tasks[index].quantity)
+
+
+      }
+    
 
   },
 
   mounted(){
-    console.log("ciao vue")
+    //console.log(this.tasks)
   }
 
 
