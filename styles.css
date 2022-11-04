@@ -1,0 +1,41 @@
+.logo, .input-area {
+  text-align: center;
+}
+
+.logo img {
+  width: 200px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+li:hover {
+  background-color: white;
+}
+
+.task-list {
+  background-color: lightgrey;
+  padding: 20px;
+}
+
+.container {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.error {
+  color: red;
+}

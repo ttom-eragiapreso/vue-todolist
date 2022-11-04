@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src=https://unpkg.com/vue@3></script>
+  <title>Document</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous'/>
+</head>
+<body>
+  
+  <div class="container" id="app">
+    
+    <div class="logo">
+      <img :src="logoUrl" alt="logo">
+    </div>
+    <div class="input-area">
+      <input type="text" placeholder="New Task" v-model.trim="newTaskText">
+      <button @click="addNewTask()">Aggiungi</button>
+      <p class="error">{{errorMessage}}</p>
+    </div>
+    
+    <div class="task-list">
+      <ul v-if="tasks.length > 0">
+        <li v-for="(task, index) in tasks"
+        :class="{'done': task.done}"
+        @click="task.done = !task.done"
+        >
+          {{task.text}}
+          <span v-if="task.quantity > 1">{{task.quantity}}</span>
+          <span @click.stop="removeTask(task, index)"><i class="fa-solid fa-xmark"></i></span>
+        </li>
+      </ul>
+
+      <h3 v-else>Hai completato tutte le tasks!</h3>
+    </div>
+    
+  </div>
+  
+  
+  
+  
+  
+  <script src="app.js"></script>
+</body>
+</html>
