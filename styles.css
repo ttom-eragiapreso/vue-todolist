@@ -1,5 +1,9 @@
 .logo, .input-area {
   text-align: center;
+  padding: 15px;
+}
+input {
+  margin-right: 10px;
 }
 
 .logo img {
@@ -38,4 +42,8 @@ li:hover {
 
 .error {
   color: red;
+}
+
+.cross {
+  padding: 5px 10px;
 }

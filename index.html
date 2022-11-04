@@ -17,9 +17,10 @@
       <img :src="logoUrl" alt="logo">
     </div>
     <div class="input-area">
-      <input type="text" placeholder="New Task" v-model.trim="newTaskText">
+      <input type="text" placeholder="New Task" v-model.trim="newTaskText" 
+      @keydown.enter="addNewTask()"
+      >
       <button @click="addNewTask()">Aggiungi</button>
-      <p class="error">{{errorMessage}}</p>
     </div>
     
     <div class="task-list">
@@ -28,13 +29,14 @@
         :class="{'done': task.quantity < 1}"
         @click="completeTask(task, index)"
         >
-          {{task.text}}
-          <span v-if="task.quantity >= 0"> Quantità: {{task.quantity}}</span>
-          <span @click.stop="removeTask(task, index)"><i class="fa-solid fa-xmark"></i></span>
-        </li>
-      </ul>
-
-      <h3 v-else>Hai completato tutte le tasks!</h3>
+        {{task.text}}
+        <span v-if="task.quantity >= 0"> Quantità: {{task.quantity}}</span>
+        <span @click.stop="removeTask(task, index)" class="cross"><i class="fa-solid fa-xmark"></i></span>
+      </li>
+    </ul>
+    
+    <h3 v-else>Hai completato tutte le tasks!</h3>
+    <p class="error">{{errorMessage}}</p>
     </div>
     
   </div>

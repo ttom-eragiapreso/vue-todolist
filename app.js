@@ -70,7 +70,9 @@ createApp({
     completeTask(task, index){
 
       this.errorMessage = ""
-      //task.quantity > 1 ? this.tasks[index].quantity-- : this.tasks[index].quantity = 0;
+      //Qui vado a scrivere nel database per avere sempre il conto aggiornato di quante volte devo completare quella determinata task.
+      //Se l'ho comletata ma non ancora rimossa, posso cliccarci di nuovo per metterne una, però per aggiungerne più di una
+      //dovrò comunque usare il bottone submit.
       if(this.tasks[index].quantity === 0 ) {
         console.log("la quantità è uguale a 0 e la metto a 1")
         this.tasks[index].quantity = 1
